@@ -44,7 +44,8 @@ module.exports = {
     new webpack.NoEmitOnErrorsPlugin(),
     FailPlugin,
     new HtmlWebpackPlugin({
-      template: conf.path.src('index.html')
+      template: conf.path.src('index.html'),
+      api: 'http://localhost:9000'
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.LoaderOptionsPlugin({

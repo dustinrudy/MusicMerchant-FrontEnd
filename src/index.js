@@ -6,8 +6,6 @@ import {Router, Route, browserHistory} from 'react-router';
 
 import {Main} from './app/main/main';
 
-import './index.css';
-
 ReactDOM.render(
   <Router history={browserHistory}>
     <Route path="/" component={Main}/>
