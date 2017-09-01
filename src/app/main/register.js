@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router';
 
 export class Register extends Component {
+
   render() {
     return (
       <div id="register" className="signup_container">
@@ -16,12 +17,8 @@ export class Register extends Component {
               <label className="labels">Password</label>
               <input className="input_fields" type="password"/></div>
             <div className="input_wrapper">
-              <label className="labels">First Name</label>
+              <label className="labels">Name</label>
               <input className="input_fields" type="text"/></div>
-            <div className="input_wrapper">
-              <label className="labels">Last Name</label>
-              <input className="input_fields" type="text"/>
-            </div>
           </div>
           <div className="input_container">
             <div className="input_wrapper">
