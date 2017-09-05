@@ -2,6 +2,25 @@ import React, {Component} from 'react';
 import {Link} from 'react-router';
 
 export class Register extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: '',
+      password: '',
+      name: '',
+      state: '',
+      city: '',
+      zip: ''
+    };
+  }
+  handleChange(e) {
+    const val = e.target.value;
+    console.log(val);
+    const id = e.target.id;
+    const stateObj = {};
+    stateObj[id] = val;
+    this.setState(stateObj);
+  }
 
   render() {
     return (
@@ -11,19 +30,19 @@ export class Register extends Component {
           <div className="input_container">
             <div className="input_wrapper">
               <label className="labels">Email</label>
-              <input className="input_fields" type="text"/>
+              <input className="input_fields" onChange={this.handleChange} id="email" value={this.state.email} type="text"/>
             </div>
             <div className="input_wrapper">
               <label className="labels">Password</label>
-              <input className="input_fields" type="password"/></div>
+              <input className="input_fields" onChange={this.handleChange} id="password" value={this.state.password} type="password"/></div>
             <div className="input_wrapper">
               <label className="labels">Name</label>
-              <input className="input_fields" type="text"/></div>
+              <input className="input_fields" onChange={this.handleChange} id="name" value={this.state.name} type="text"/></div>
           </div>
           <div className="input_container">
             <div className="input_wrapper">
               <label className="labels">State</label>
-              <select className="input_fields">
+              <select className="input_fields" onChange={this.handleChange} id="state" value={this.state.state}>
                 <option value="">Select Your State</option>
                 <option value="AL">Alabama</option>
                 <option value="AK">Alaska</option>
@@ -79,7 +98,7 @@ export class Register extends Component {
               </select></div>
             <div className="input_wrapper">
               <label className="labels">City</label>
-              <select className="input_fields">
+              <select className="input_fields" onChange={this.handleChange} id="city" value={this.state.city}>
                 <option value="">Select Your City</option>
                 <option value="New York">New York</option>
                 <option value="Los Angeles">Los Angeles</option>
@@ -95,7 +114,7 @@ export class Register extends Component {
             </div>
             <div className="input_wrapper">
               <label className="labels">ZIP Code</label>
-              <input className="input_fields" type="text"/></div>
+              <input className="input_fields" onChange={this.handleChange} id="zip" value={this.state.zip} type="text"/></div>
           </div>
           <div className="button_div">
             <Link to="/signup"><button className="submit_button" type="submit">Submit</button></Link>
