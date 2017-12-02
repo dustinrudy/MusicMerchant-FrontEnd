@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router';
+import {createUser} from '../api/user';
 
 export class Register extends Component {
   constructor(props) {
@@ -12,21 +12,34 @@ export class Register extends Component {
       city: '',
       zip: ''
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleChange(e) {
     const val = e.target.value;
-    console.log(val);
     const id = e.target.id;
     const stateObj = {};
     stateObj[id] = val;
+    console.log(this.state, 'stateObj');
     this.setState(stateObj);
+  }
+  handleSubmit(e) {
+    e.preventDefault();
+    createUser({
+      email: this.state.email,
+      password: this.state.password,
+      name: this.state.name,
+      state: this.state.state,
+      city: this.state.city,
+      zip: this.state.zip
+    });
   }
 
   render() {
     return (
       <div id="register" className="signup_container">
         <div className="register_title">Register</div>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <div className="input_container">
             <div className="input_wrapper">
               <label className="labels">Email</label>
@@ -117,7 +130,7 @@ export class Register extends Component {
               <input className="input_fields" onChange={this.handleChange} id="zip" value={this.state.zip} type="text"/></div>
           </div>
           <div className="button_div">
-            <Link to="/signup"><button className="submit_button" type="submit">Submit</button></Link>
+            <button className="submit_button" type="submit">Submit</button>
           </div>
         </form>
       </div>
